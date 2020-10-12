@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "App.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n    let price = 12.51;\n    let tip = 15;\n\n    function changeTip(newTip) {\n        tip = newTip;\n    }\n\n    function calculatedTip(price, tip) {\n        const calcTip = (price * (tip / 100));\n        return calcTip.toLocaleString('en-US', {\n            style: 'currency',\n            currency: 'USD'\n        });\n    }\n\n    $: tipAmount = calculatedTip(price, tip);\n\n</script>\n<style>\n    h1 {\n        text-align: center;\n    }\n    h2 {\n        text-align: center;\n        margin-top: 20px;\n    }\n    #tip {\n        width: 100%;\n    }\n    button {\n        width: 100%;\n    }\n</style>\n<main class=\"container\">\n    <section class=\"row\">\n        <div class=\"column\">\n            <h1>Tip Calculator</h1>\n        </div>\n    </section>\n    <section class=\"row\">\n        <div class=\"column\">\n            <label for=\"price\">Price</label>\n            <input bind:value={price} type=\"number\" id=\"price\">\n        </div>\n    </section>\n    <section class=\"row\">\n        <div class=\"column\">\n            <label for=\"tip\">Tip ({tip}%)</label>\n            <input bind:value={tip} type=\"range\" min=\"0\" max=\"100\" step=\"1\" id=\"tip\">\n        </div>\n    </section>\n    <section class=\"row\">\n        <div class=\"column\">\n            <button \n            class:button-outline={tip !== 15}\n            on:click={() => changeTip(15)} \n                class=\"button\">\n                15%\n            </button>\n        </div>\n        <div class=\"column\">\n            <button \n            class:button-outline={tip !== 25}\n            on:click={() => changeTip(25)} \n            class=\"button\">\n                25%\n            </button>\n        </div>\n        <div class=\"column\">\n            <button \n            class:button-outline={tip !== 30}\n            on:click={() => changeTip(30)} \n            class=\"button\">\n                30%\n            </button>\n        </div>\n    </section>\n    <section class=\"row\">\n        <div class=\"column\">\n            <h2>Calculated Tip: {tipAmount}</h2>\n        </div>\n    </section>\n</main>"
+  ],
+  "names": [],
+  "mappings": "AAoBI,EAAE,cAAC,CAAC,AACA,UAAU,CAAE,MAAM,AACtB,CAAC,AACD,EAAE,cAAC,CAAC,AACA,UAAU,CAAE,MAAM,CAClB,UAAU,CAAE,IAAI,AACpB,CAAC,AACD,IAAI,cAAC,CAAC,AACF,KAAK,CAAE,IAAI,AACf,CAAC,AACD,MAAM,cAAC,CAAC,AACJ,KAAK,CAAE,IAAI,AACf,CAAC"
+}
