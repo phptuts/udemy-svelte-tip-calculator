@@ -1,3 +1,11 @@
+<script>
+    let price = 12.51;
+    let tip = 15;
+
+    function changeTip(newTip) {
+        tip = newTip;
+    }
+</script>
 <style>
     h1 {
         text-align: center;
@@ -22,35 +30,44 @@
     <section class="row">
         <div class="column">
             <label for="price">Price</label>
-            <input type="number" id="price">
+            <input bind:value={price} type="number" id="price">
         </div>
     </section>
     <section class="row">
         <div class="column">
-            <label for="tip">Tip (15%)</label>
-            <input type="range" min="0" max="100" step="1" id="tip">
+            <label for="tip">Tip ({tip}%)</label>
+            <input bind:value={tip} type="range" min="0" max="100" step="1" id="tip">
         </div>
     </section>
     <section class="row">
         <div class="column">
-            <button class="button button-outline">
+            <button 
+            class:button-outline={tip !== 15}
+            on:click={() => changeTip(15)} 
+                class="button">
                 15%
             </button>
         </div>
         <div class="column">
-            <button class="button button-outline">
+            <button 
+            class:button-outline={tip !== 25}
+            on:click={() => changeTip(25)} 
+            class="button">
                 25%
             </button>
         </div>
         <div class="column">
-            <button class="button button-outline">
+            <button 
+            class:button-outline={tip !== 30}
+            on:click={() => changeTip(30)} 
+            class="button">
                 30%
             </button>
         </div>
     </section>
     <section class="row">
         <div class="column">
-            <h2>Calculator Tip: $12.00</h2>
+            <h2>Calculated Tip: $12.00</h2>
         </div>
     </section>
 </main>
