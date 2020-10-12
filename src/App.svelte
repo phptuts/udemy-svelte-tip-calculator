@@ -5,6 +5,17 @@
     function changeTip(newTip) {
         tip = newTip;
     }
+
+    function calculatedTip(price, tip) {
+        const calcTip = (price * (tip / 100));
+        return calcTip.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD'
+        });
+    }
+
+    $: tipAmount = calculatedTip(price, tip);
+
 </script>
 <style>
     h1 {
@@ -67,7 +78,7 @@
     </section>
     <section class="row">
         <div class="column">
-            <h2>Calculated Tip: $12.00</h2>
+            <h2>Calculated Tip: {tipAmount}</h2>
         </div>
     </section>
 </main>
